@@ -69,7 +69,7 @@ public class Version {
                 PY_MICRO_VERSION = Integer.valueOf(properties.getProperty("jython.micro_version"));
                 PY_RELEASE_LEVEL = Integer.valueOf(properties.getProperty("jython.release_level"));
                 PY_RELEASE_SERIAL = Integer.valueOf(properties.getProperty("jython.release_serial"));
-                DATE = properties.getProperty("jython.build.date");
+                DATE = "XX.YY.ZZZZ"; //properties.getProperty("jython.build.date"); // TODO: hide problem with compilation on non-ASCII systems
                 TIME = properties.getProperty("jython.build.time");
                 GIT_BRANCH = properties.getProperty("jython.build.git_branch");
                 GIT_TAG = properties.getProperty("jython.build.git_tag");
