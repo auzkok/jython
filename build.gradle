@@ -108,9 +108,6 @@ sourceSets {
 
         java {
             srcDirs = ['src', project.ext.antlrGenDir]
-            // Reference to proprietary libraries not supplied
-            exclude 'com/ziclix/python/sql/handler/InformixDataHandler.java'
-            exclude 'com/ziclix/python/sql/handler/OracleDataHandler.java'
         }
 
         resources {
@@ -125,8 +122,6 @@ sourceSets {
 
         java {
             srcDirs = ['tests/java']
-            // Reference to proprietary libraries not supplied
-            exclude 'com/ziclix/python/sql/**'
         }
     }
 }
