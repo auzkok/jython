@@ -134,7 +134,7 @@ public class zipimporter extends importer<PyObject> implements Traverseproc {
             throw zipimport.ZipImportError("not a Zip file: " + path);
         }
 
-        if (prefix != "" && !prefix.endsWith(File.separator)) {
+        if (!prefix.equals("") && !prefix.endsWith(File.separator)) {
             prefix += File.separator;
         }
     }

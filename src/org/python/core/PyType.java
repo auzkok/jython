@@ -2047,7 +2047,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                  * http://bugs.jython.org/issue1540 Also ignore this if we're doing super during
                  * __init__ as we want it to behave Fixes http://bugs.jython.org/issue2375
                  */
-                if (name != "__init__" && !name.startsWith("super__")) {
+                if (!name.equals("__init__") && !name.startsWith("super__")) {
                     lookupName = "super__" + name;
                 } else {
                     lookupName = name;
@@ -2241,7 +2241,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
 
     void postSetattr(String name) {
         invalidateMethodCache();
-        if (name == "__get__") {
+        if (name.equals("__get__")) {
             if (!hasGet && lookup("__get__") != null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2253,7 +2253,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__set__") {
+        } else if (name.equals("__set__")) {
             if (!hasSet && lookup("__set__") != null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2265,7 +2265,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__delete__") {
+        } else if (name.equals("__delete__")) {
             if (!hasDelete && lookup("__delete__") != null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2277,7 +2277,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__getattribute__") {
+        } else if (name.equals("__getattribute__")) {
             traverse_hierarchy(false, new OnType() {
 
                 @Override
@@ -2312,7 +2312,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
 
     void postDelattr(String name) {
         invalidateMethodCache();
-        if (name == "__get__") {
+        if (name.equals("__get__")) {
             if (hasGet && lookup("__get__") == null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2327,7 +2327,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__set__") {
+        } else if (name.equals("__set__")) {
             if (hasSet && lookup("__set__") == null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2342,7 +2342,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__delete__") {
+        } else if (name.equals("__delete__")) {
             if (hasDelete && lookup("__delete__") == null) {
                 traverse_hierarchy(false, new OnType() {
 
@@ -2357,7 +2357,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
                     }
                 });
             }
-        } else if (name == "__getattribute__") {
+        } else if (name.equals("__getattribute__")) {
             traverse_hierarchy(false, new OnType() {
 
                 @Override
@@ -2850,7 +2850,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
             }
 
             public boolean isValid(Object version, String name) {
-                return this.version == version && this.name == name;
+                return this.version == version && this.name.equals(name);
             }
 
             public PyObject get(PyObject[] where) {

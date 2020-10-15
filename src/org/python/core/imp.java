@@ -783,11 +783,11 @@ public class imp {
      */
     private static PyObject loadBuiltin(String name) {
         final String MSG = "import {0} # builtin";
-        if (name == "sys") {
+        if (name.equals("sys")) {
             logger.log(Level.CONFIG, MSG, name);
             return Py.java2py(Py.getSystemState());
         }
-        if (name == "__builtin__") {
+        if (name.equals("__builtin__")) {
             logger.log(Level.CONFIG, MSG, new Object[] {name, name});
             return new PyModule("__builtin__", Py.getSystemState().builtins);
         }

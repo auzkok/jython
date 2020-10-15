@@ -74,7 +74,7 @@ public class PyTableCode extends PyBaseCode
 
     private void throwReadonly(String name) {
         for (int i = 0; i < __members__.length; i++) {
-            if (__members__[i] == name) {
+            if (__members__[i].equals(name)) {
                 throw Py.TypeError("readonly attribute");
             }
         }
@@ -107,22 +107,22 @@ public class PyTableCode extends PyBaseCode
     @Override
     public PyObject __findattr_ex__(String name) {
         // have to craft co_varnames specially
-        if (name == "co_varnames") {
+        if (name.equals("co_varnames")) {
             return toPyStringTuple(co_varnames);
         }
-        if (name == "co_cellvars") {
+        if (name.equals("co_cellvars")) {
             return toPyStringTuple(co_cellvars);
         }
-        if (name == "co_freevars") {
+        if (name.equals("co_freevars")) {
             return toPyStringTuple(co_freevars);
         }
-        if (name == "co_filename") {
+        if (name.equals("co_filename")) {
             return Py.fileSystemEncode(co_filename); // bytes object expected by clients
         }
-        if (name == "co_name") {
+        if (name.equals("co_name")) {
             return new PyString(co_name);
         }
-        if (name == "co_flags") {
+        if (name.equals("co_flags")) {
             return Py.newInteger(co_flags.toBits());
         }
         return super.__findattr_ex__(name);

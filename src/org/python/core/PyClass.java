@@ -106,13 +106,13 @@ public class PyClass extends PyObject implements Traverseproc {
 
     @Override
     public PyObject __findattr_ex__(String name) {
-        if (name == "__dict__") {
+        if (name.equals("__dict__")) {
             return __dict__;
         }
-        if (name == "__bases__") {
+        if (name.equals("__bases__")) {
             return __bases__;
         }
-        if (name == "__name__") {
+        if (name.equals("__name__")) {
             return Py.newString(__name__);
         }
 
@@ -125,31 +125,31 @@ public class PyClass extends PyObject implements Traverseproc {
 
     @Override
     public void __setattr__(String name, PyObject value) {
-        if (name == "__dict__") {
+        if (name.equals("__dict__")) {
             setDict(value);
             return;
-        } else if (name == "__bases__") {
+        } else if (name.equals("__bases__")) {
             setBases(value);
             return;
-        } else if (name == "__name__") {
+        } else if (name.equals("__name__")) {
             setName(value);
             return;
-        } else if (name == "__getattr__") {
+        } else if (name.equals("__getattr__")) {
             __getattr__ = value;
             return;
-        } else if (name == "__setattr__") {
+        } else if (name.equals("__setattr__")) {
             __setattr__ = value;
             return;
-        } else if (name == "__delattr__") {
+        } else if (name.equals("__delattr__")) {
             __delattr__ = value;
             return;
-        } else if (name == "__tojava__") {
+        } else if (name.equals("__tojava__")) {
             __tojava__ = value;
             return;
-        } else if (name == "__del__") {
+        } else if (name.equals("__del__")) {
             __del__ = value;
             return;
-        } else if (name == "__contains__") {
+        } else if (name.equals("__contains__")) {
             __contains__ = value;
             return;
         }

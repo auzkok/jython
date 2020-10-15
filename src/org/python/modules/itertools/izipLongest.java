@@ -51,7 +51,7 @@ public class izipLongest extends PyIterator {
         PyObject[] iterables;
         PyObject fillvalue;
 
-        if (kwds.length == 1 && kwds[0] == "fillvalue") {
+        if (kwds.length == 1 && kwds[0].equals("fillvalue")) {
             fillvalue = args[args.length - 1];
             iterables = new PyObject[args.length - 1];
             System.arraycopy(args, 0, iterables, 0, args.length - 1);

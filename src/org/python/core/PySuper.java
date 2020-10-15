@@ -101,7 +101,7 @@ public class PySuper extends PyObject implements Traverseproc {
     }
 
     final PyObject super___findattr_ex__(String name) {
-        if (objType != null && name != "__class__") {
+        if (objType != null && !name.equals("__class__")) {
             PyObject descr = objType.super_lookup(superType, name);
             if (descr != null) {
                 return descr.__get__(objType == obj ? null : obj, objType);

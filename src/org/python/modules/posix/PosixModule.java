@@ -933,7 +933,7 @@ public class PosixModule implements ClassDictInit {
         if (errno == Errno.__UNKNOWN_CONSTANT__) {
             return new PyString("Unknown error: " + code);
         }
-        if (errno.name() == errno.toString()) {
+        if (errno.name().equals(errno.toString())) {
             // Fake constant or just lacks a description, fallback to Linux's
             // XXX: have jnr-constants handle this fallback
             errno = Enum.valueOf(jnr.constants.platform.linux.Errno.class,

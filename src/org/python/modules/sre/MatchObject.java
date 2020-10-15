@@ -187,24 +187,24 @@ public class MatchObject extends PyObject implements Traverseproc {
 
     public PyObject __findattr_ex__(String key) {
         //System.out.println("__findattr__:" + key);
-        if (key == "flags")
+        if (key.equals("flags"))
             return Py.newInteger(pattern.flags);
-        if (key == "groupindex")
+        if (key.equals("groupindex"))
             return pattern.groupindex;
-        if (key == "re")
+        if (key.equals("re"))
             return pattern;
-        if (key == "pos")
+        if (key.equals("pos"))
             return Py.newInteger(pos);
-        if (key == "endpos")
+        if (key.equals("endpos"))
             return Py.newInteger(endpos);
-        if (key == "lastindex")
+        if (key.equals("lastindex"))
             return lastindex == -1 ? Py.None : Py.newInteger(lastindex);
-        if (key == "lastgroup"){
+        if (key.equals("lastgroup")){
             if(pattern.indexgroup != null && lastindex >= 0)
                 return pattern.indexgroup.__getitem__(lastindex);
             return Py.None;
         }
-        if ( key == "regs" ){
+        if (key.equals("regs")){
             return regs();
         }
         return super.__findattr_ex__(key);

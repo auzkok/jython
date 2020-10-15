@@ -136,7 +136,7 @@ public class cStringIO {
 
         @Override
         public void __setattr__(String name, PyObject value) {
-            if (name == "softspace") {
+            if (name.equals("softspace")) {
                 softspace = value.__nonzero__();
                 return;
             }

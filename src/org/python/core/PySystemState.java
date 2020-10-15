@@ -268,16 +268,16 @@ public class PySystemState extends PyObject
     }
 
     private static void checkReadOnly(String name) {
-        if (name == "__dict__" || name == "__class__" || name == "registry" || name == "exec_prefix"
-                || name == "packageManager") {
+        if (name.equals("__dict__") || name.equals("__class__") || name.equals("registry") || name.equals("exec_prefix")
+                || name.equals("packageManager")) {
             throw Py.TypeError("readonly attribute");
         }
     }
 
     private static void checkMustExist(String name) {
-        if (name == "__dict__" || name == "__class__" || name == "registry" || name == "exec_prefix"
-                || name == "platform" || name == "packageManager" || name == "builtins"
-                || name == "warnoptions") {
+        if (name.equals("__dict__") || name.equals("__class__") || name.equals("registry") || name.equals("exec_prefix")
+                || name.equals("platform") || name.equals("packageManager") || name.equals("builtins")
+                || name.equals("warnoptions")) {
             throw Py.TypeError("readonly attribute");
         }
     }
@@ -377,19 +377,19 @@ public class PySystemState extends PyObject
     // xxx fix this accessors
     @Override
     public PyObject __findattr_ex__(String name) {
-        if (name == "exc_value") {
+        if (name.equals("exc_value")) {
             PyException exc = Py.getThreadState().exception;
             if (exc == null) {
                 return null;
             }
             return exc.value;
-        } else if (name == "exc_type") {
+        } else if (name.equals("exc_type")) {
             PyException exc = Py.getThreadState().exception;
             if (exc == null) {
                 return null;
             }
             return exc.type;
-        } else if (name == "exc_traceback") {
+        } else if (name.equals("exc_traceback")) {
             PyException exc = Py.getThreadState().exception;
             if (exc == null) {
                 return null;
@@ -416,7 +416,7 @@ public class PySystemState extends PyObject
     @Override
     public void __setattr__(String name, PyObject value) {
         checkReadOnly(name);
-        if (name == "builtins") {
+        if (name.equals("builtins")) {
             setBuiltins(value);
         } else {
             PyObject ret = getType().lookup(name); // xxx fix fix fix

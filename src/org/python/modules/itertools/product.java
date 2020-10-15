@@ -48,7 +48,7 @@ public class product extends PyIterator {
     final void product___init__(PyObject[] args, String[] kws) {
         final int repeat;
         final int num_iterables;
-        if (kws.length == 1 && kws[0] == "repeat") {
+        if (kws.length == 1 && kws[0].equals("repeat")) {
             repeat = args[args.length -1].asInt();
             if (repeat < 0) {
                 throw Py.ValueError("repeat argument cannot be negative");

@@ -164,9 +164,9 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
     }
 
     protected PyObject ifindlocal(String name) {
-        if (name == "__dict__") return __dict__;
-        if (name == "__class__") return instclass;
-        if (name == "__ensure_finalizer__") {
+        if (name.equals("__dict__")) return __dict__;
+        if (name.equals("__class__")) return instclass;
+        if (name.equals("__ensure_finalizer__")) {
             if (__ensure_finalizer__Function == null) {
                 __ensure_finalizer__Function = makeFunction__ensure_finalizer__();
             }
@@ -282,7 +282,7 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
 
     @ExposedMethod
     final void instance___setattr__(String name, PyObject value) {
-        if (name == "__class__") {
+        if (name.equals("__class__")) {
             if (value instanceof PyClass) {
                 instclass = (PyClass) value;
                 if (instclass.__del__ != null &&
@@ -293,7 +293,7 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
                 throw Py.TypeError("__class__ must be set to a class");
             }
             return;
-        } else if (name == "__dict__") {
+        } else if (name.equals("__dict__")) {
             __dict__ = value;
             return;
         }
@@ -304,7 +304,7 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
         } else {
             __dict__.__setitem__(name, value);
         }
-        if (name == "__del__" && !JyAttribute.hasAttr(this, JyAttribute.FINALIZE_TRIGGER_ATTR)) {
+        if (name.equals("__del__") && !JyAttribute.hasAttr(this, JyAttribute.FINALIZE_TRIGGER_ATTR)) {
             FinalizeTrigger.ensureFinalizer(this);
         }
     }

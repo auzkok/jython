@@ -219,7 +219,7 @@ public class PyModule extends PyObject implements Traverseproc {
 
     @ExposedMethod
     final void module___setattr__(String name, PyObject value) {
-        if (name != "__dict__") {
+        if (!name.equals("__dict__")) {
             ensureDict();
         }
         super.__setattr__(name, value);
