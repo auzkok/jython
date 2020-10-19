@@ -99,7 +99,7 @@ class ThreadStateMapping {
                 ++i;
             }
         }
-        PyObject elements[] = new PyObject[i*2];
+        PyObject[] elements = new PyObject[i*2];
         i = 0;
         for (Map.Entry<Thread, ThreadState> entry: entries) {
             if (entry.getValue().frame != null) {

@@ -307,7 +307,7 @@ public class codecs {
                 + " in error callback");
     }
 
-    static char hexdigits[] = {//@formatter:off
+    static char[] hexdigits = {//@formatter:off
         '0', '1', '2', '3', '4', '5', '6', '7',
         '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
     }; //@formatter:on
@@ -994,7 +994,7 @@ public class codecs {
 
     /* --- UTF-8 Codec ---------------------------------------------------- */
 
-    private static byte utf8_code_length[] = {//@formatter:off
+    private static byte[] utf8_code_length = {//@formatter:off
         /* Map UTF-8 encoded prefix byte to sequence length.  zero means
         illegal prefix.  see RFC 2279 for details */
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,

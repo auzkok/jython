@@ -62,11 +62,11 @@ public class permutations extends PyIterator {
     private void permutations___init__(final PyObject iterable, final int r) {
         final PyTuple pool = PyTuple.fromIterable(iterable);
         final int n = pool.__len__();
-        final int indices[] = new int[n];
+        final int[] indices = new int[n];
         for (int i = 0; i < n; i++) {
             indices[i] = i;
         }
-        final int cycles[] = new int[r];
+        final int[] cycles = new int[r];
         for (int i = 0; i < r; i++) {
             cycles[i] = n - i;
         }

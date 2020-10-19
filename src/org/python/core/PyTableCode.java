@@ -13,7 +13,7 @@ public class PyTableCode extends PyBaseCode
     int func_id;
     public String co_code = ""; // only used by inspect
 
-    public PyTableCode(int argcount, String varnames[],
+    public PyTableCode(int argcount, String[] varnames,
                        String filename, String name,
                        int firstlineno,
                        boolean varargs, boolean varkwargs,
@@ -23,7 +23,7 @@ public class PyTableCode extends PyBaseCode
              varkwargs, funcs, func_id, null, null, 0, 0);
     }
 
-    public PyTableCode(int argcount, String varnames[],
+    public PyTableCode(int argcount, String[] varnames,
                        String filename, String name,
                        int firstlineno,
                        boolean varargs, boolean varkwargs,
@@ -65,7 +65,7 @@ public class PyTableCode extends PyBaseCode
 
     @Override
     public PyObject __dir__() {
-        PyString members[] = new PyString[__members__.length];
+        PyString[] members = new PyString[__members__.length];
         for (int i = 0; i < __members__.length; i++) {
             members[i] = new PyString(__members__[i]);
         }

@@ -58,7 +58,7 @@ public class product extends PyIterator {
             repeat = 1;
             num_iterables = args.length;
         }
-        final PyTuple tuples[] = new PyTuple[num_iterables];
+        final PyTuple[] tuples = new PyTuple[num_iterables];
         for (int i = 0; i < num_iterables; i++) {
             tuples[i] = PyTuple.fromIterable(args[i]);
         }
@@ -68,11 +68,11 @@ public class product extends PyIterator {
     private void product___init__(PyTuple[] tuples, int repeat) {
         // Make repeat duplicates, in order
         final int num_pools = tuples.length * repeat;
-        final PyTuple pools[] = new PyTuple[num_pools];
+        final PyTuple[] pools = new PyTuple[num_pools];
         for (int r = 0; r < repeat; r++) {
             System.arraycopy(tuples, 0, pools, r * tuples.length, tuples.length);
         }
-        final int indices[] = new int[num_pools];
+        final int[] indices = new int[num_pools];
 
         iter = new itertools.ItertoolsIterator() {
             boolean firstthru = true;
@@ -101,7 +101,7 @@ public class product extends PyIterator {
             }
 
             private PyTuple makeTuple() {
-                PyObject items[] = new PyObject[num_pools];
+                PyObject[] items = new PyObject[num_pools];
                 for (int i = 0; i < num_pools; i++) {
                     items[i] = pools[i].__getitem__(indices[i]);
                 }

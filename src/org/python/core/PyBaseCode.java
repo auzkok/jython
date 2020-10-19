@@ -11,10 +11,10 @@ public abstract class PyBaseCode extends PyCode {
     public int co_argcount;
     int nargs;
     public int co_firstlineno = -1;
-    public String co_varnames[];
-    public String co_cellvars[];
+    public String[] co_varnames;
+    public String[] co_cellvars;
     public int jy_npurecell; // internal: jython specific
-    public String co_freevars[];
+    public String[] co_freevars;
     public String co_filename;
     public CompilerFlags co_flags = new CompilerFlags();
     public int co_nlocals;
@@ -187,8 +187,8 @@ public abstract class PyBaseCode extends PyCode {
         return call(state, frame, closure);
     }
 
-    public PyObject call(ThreadState state, PyObject self, PyObject args[],
-                         String keywords[], PyObject globals,
+    public PyObject call(ThreadState state, PyObject self, PyObject[] args,
+                         String[] keywords, PyObject globals,
                          PyObject[] defaults, PyObject closure)
     {
         PyObject[] os = new PyObject[args.length+1];
@@ -197,7 +197,7 @@ public abstract class PyBaseCode extends PyCode {
         return call(state, os, keywords, globals, defaults, closure);
     }
 
-    public PyObject call(ThreadState state, PyObject args[], String kws[], PyObject globals,
+    public PyObject call(ThreadState state, PyObject[] args, String[] kws, PyObject globals,
                          PyObject[] defs, PyObject closure) {
         final PyFrame frame = new PyFrame(this, globals);
         final int argcount = args.length - kws.length;

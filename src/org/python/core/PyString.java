@@ -809,7 +809,7 @@ public class PyString extends PyBaseString implements BufferProtocol {
             return fromSubstring(start, stop);
         } else {
             int n = sliceLength(start, stop, step);
-            char new_chars[] = new char[n];
+            char[] new_chars = new char[n];
             int j = 0;
             for (int i = start; j < n; i += step) {
                 new_chars[j++] = getString().charAt(i);
@@ -947,7 +947,7 @@ public class PyString extends PyBaseString implements BufferProtocol {
             // line with a wrapped int.
             throw Py.OverflowError("max str len is " + Integer.MAX_VALUE);
         }
-        char new_chars[] = new char[s * count];
+        char[] new_chars = new char[s * count];
         for (int i = 0; i < count; i++) {
             getString().getChars(0, s, new_chars, i * s);
         }

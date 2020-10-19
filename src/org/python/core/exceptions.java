@@ -680,7 +680,7 @@ public class exceptions extends PyObject implements ClassDictInit {
         }
 
         @Override
-        public PyObject __call__(PyObject[] args, String kwargs[]) {
+        public PyObject __call__(PyObject[] args, String[] kwargs) {
             try {
                 return Py.java2py(javaMethod.invoke(null, self, args, kwargs));
             } catch (Throwable t) {

@@ -19,13 +19,13 @@ public abstract class PyCode extends PyObject
     }
 
     abstract public PyObject call(ThreadState state,
-                                  PyObject args[], String keywords[],
+                                  PyObject[] args, String[] keywords,
                                   PyObject globals, PyObject[] defaults,
                                   PyObject closure);
 
     abstract public PyObject call(ThreadState state,
-                                  PyObject self, PyObject args[],
-                                  String keywords[],
+                                  PyObject self, PyObject[] args,
+                                  String[] keywords,
                                   PyObject globals, PyObject[] defaults,
                                   PyObject closure);
 

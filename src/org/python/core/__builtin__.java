@@ -1270,7 +1270,7 @@ class ImportFunction extends PyBuiltinFunction {
     private static final String[] ARGS = {"name", "globals", "locals", "fromlist", "level"};
 
     @Override
-    public PyObject __call__(PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         ArgParser ap = new ArgParser("__import__", args, keywords, ARGS, 1);
         PyObject module = ap.getPyObject(0);
         String name;
@@ -1294,7 +1294,7 @@ class SortedFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         if (args.length == 0) {
             throw Py.TypeError("sorted() takes at least 1 argument (0 given)");
         } else if (args.length > 4) {
@@ -1310,7 +1310,7 @@ class SortedFunction extends PyBuiltinFunction {
 
         PyList seq = new PyList(args[0]);
 
-        PyObject newargs[] = new PyObject[args.length - 1];
+        PyObject[] newargs = new PyObject[args.length - 1];
         System.arraycopy(args, 1, newargs, 0, args.length - 1);
         ArgParser ap = new ArgParser("sorted", newargs, kwds,
                                      new String[] {"cmp", "key", "reverse"}, 0);
@@ -1407,13 +1407,13 @@ class PrintFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         int kwlen = kwds.length;
         int argslen = args.length;
         boolean useUnicode = false;
-        PyObject values[] = new PyObject[argslen - kwlen];
+        PyObject[] values = new PyObject[argslen - kwlen];
         System.arraycopy(args, 0, values, 0, argslen - kwlen);
-        PyObject keyValues[] = new PyObject[kwlen];
+        PyObject[] keyValues = new PyObject[kwlen];
         System.arraycopy(args, argslen - kwlen, keyValues, 0, kwlen);
         ArgParser ap = new ArgParser("print", keyValues, kwds, new String[] {"sep", "end", "file"});
         for (PyObject keyValue: keyValues) {
@@ -1428,7 +1428,7 @@ class PrintFunction extends PyBuiltinFunction {
         return print(values, sep, end, file, useUnicode);
     }
 
-    private static PyObject print(PyObject values[], String sep, String end,
+    private static PyObject print(PyObject[] values, String sep, String end,
                                   PyObject file, boolean useUnicode) {
         StdoutWrapper out;
         if (file != null && file != Py.None) {
@@ -1479,7 +1479,7 @@ class MaxFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         int argslen = args.length;
         PyObject key = null;
 
@@ -1489,7 +1489,7 @@ class MaxFunction extends PyBuiltinFunction {
         if (kwds.length > 0) {
             if (kwds[0].equals("key")) {
                 key = args[argslen - 1];
-                PyObject newargs[] = new PyObject[argslen - 1];
+                PyObject[] newargs = new PyObject[argslen - 1];
                 System.arraycopy(args, 0, newargs, 0, argslen - 1);
                 args = newargs;
             } else {
@@ -1538,7 +1538,7 @@ class MinFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         int argslen = args.length;
         PyObject key = null;
 
@@ -1548,7 +1548,7 @@ class MinFunction extends PyBuiltinFunction {
         if (kwds.length > 0) {
             if (kwds[0].equals("key")) {
                 key = args[argslen - 1];
-                PyObject newargs[] = new PyObject[argslen - 1];
+                PyObject[] newargs = new PyObject[argslen - 1];
                 System.arraycopy(args, 0, newargs, 0, argslen - 1);
                 args = newargs;
             } else {
@@ -1594,7 +1594,7 @@ class RoundFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         ArgParser ap = new ArgParser("round", args, kwds, new String[] {"number", "ndigits"}, 0);
         PyObject number = ap.getPyObject(0);
         int ndigits = ap.getIndex(1, 0);
@@ -1628,7 +1628,7 @@ class CompileFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         ArgParser ap = new ArgParser("compile", args, kwds,
                                      new String[] {"source", "filename", "mode", "flags",
                                                    "dont_inherit"},
@@ -1712,7 +1712,7 @@ class OpenFunction extends PyBuiltinFunction {
             + "org.python.core.util.FileUtil.wrap(stream[, bufsize]) instead.";
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         ArgParser ap = new ArgParser("file", args, kwds, new String[] {"name", "mode", "buffering"},
                                      1);
         PyObject obj = ap.getPyObject(0);
@@ -1740,7 +1740,7 @@ class NextFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         ArgParser ap = new ArgParser("next", args, kwds, new String[] {"iterator", "default"}, 1);
         ap.noKeywords();
         PyObject it = ap.getPyObject(0);
@@ -1771,7 +1771,7 @@ class BinFunction extends PyBuiltinFunction {
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String kwds[]) {
+    public PyObject __call__(PyObject[] args, String[] kwds) {
         ArgParser ap = new ArgParser("bin", args, kwds, new String[] {"number"}, 1);
         ap.noKeywords();
         return IntegerFormatter.bin(ap.getPyObject(0));

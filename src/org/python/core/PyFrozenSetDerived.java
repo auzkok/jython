@@ -1023,7 +1023,7 @@ public class PyFrozenSetDerived extends PyFrozenSet implements Slotted,Finalizab
         super.__delitem__(key);
     }
 
-    public PyObject __call__(PyObject args[],String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         PyType self_type=getType();
         PyObject impl=self_type.lookup("__call__");
         if (impl!=null) {

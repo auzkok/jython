@@ -329,7 +329,7 @@ public class PyTuple extends PySequenceList {
         } else if (fromIndex > toIndex) {
             throw new IllegalArgumentException();
         }
-        PyObject elements[] = new PyObject[toIndex - fromIndex];
+        PyObject[] elements = new PyObject[toIndex - fromIndex];
         for (int i = 0, j = fromIndex; i < elements.length; i++, j++) {
             elements[i] = array[j];
         }

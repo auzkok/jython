@@ -51,8 +51,8 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
 
     // follows new.code's interface
     public PyBytecode(int argcount, int nlocals, int stacksize, int flags,
-            String codestring, PyObject[] constants, String[] names, String varnames[],
-            String filename, String name, int firstlineno, String lnotab) {
+                      String codestring, PyObject[] constants, String[] names, String[] varnames,
+                      String filename, String name, int firstlineno, String lnotab) {
         this(argcount, nlocals, stacksize, flags, codestring,
                 constants, names, varnames, filename, name, firstlineno, lnotab,
                 null, null);
@@ -60,9 +60,9 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
 
     // XXX - intern names HERE instead of in marshal
     public PyBytecode(int argcount, int nlocals, int stacksize, int flags,
-            String codestring, PyObject[] constants, String[] names, String varnames[],
-            String filename, String name, int firstlineno, String lnotab,
-            String[] cellvars, String[] freevars) {
+                      String codestring, PyObject[] constants, String[] names, String[] varnames,
+                      String filename, String name, int firstlineno, String lnotab,
+                      String[] cellvars, String[] freevars) {
 
         debug = defaultDebug;
 
@@ -100,7 +100,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
 
     @Override
     public PyObject __dir__() {
-        PyString members[] = new PyString[__members__.length];
+        PyString[] members = new PyString[__members__.length];
         for (int i = 0; i < __members__.length; i++) {
             members[i] = new PyString(__members__[i]);
         }
@@ -787,7 +787,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
 
                     case BUILD_CLASS: {
                         PyObject methods = stack.pop();
-                        PyObject bases[] = ((PySequenceList) (stack.pop())).getArray();
+                        PyObject[] bases = ((PySequenceList) (stack.pop())).getArray();
                         String name = stack.pop().toString();
                         stack.push(Py.makeClass(name, bases, methods));
                         break;
@@ -1415,7 +1415,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
                 break;
             }
             default: {
-                PyObject args[] = stack.popN(na);
+                PyObject[] args = stack.popN(na);
                 PyObject callable = stack.pop();
                 stack.push(callable.__call__(args));
             }
@@ -1424,11 +1424,11 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
 
     private static void call_function(int na, int nk, PyStack stack) {
         int n = na + nk * 2;
-        PyObject params[] = stack.popN(n);
+        PyObject[] params = stack.popN(n);
         PyObject callable = stack.pop();
 
-        PyObject args[] = new PyObject[na + nk];
-        String keywords[] = new String[nk];
+        PyObject[] args = new PyObject[na + nk];
+        String[] keywords = new String[nk];
         int i;
         for (i = 0; i < na; i++) {
             args[i] = params[i];
@@ -1444,11 +1444,11 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
         int n = na + nk * 2;
         PyObject kwargs = kw ? stack.pop() : null;
         PyObject starargs = var ? stack.pop() : null;
-        PyObject params[] = stack.popN(n);
+        PyObject[] params = stack.popN(n);
         PyObject callable = stack.pop();
 
-        PyObject args[] = new PyObject[na + nk];
-        String keywords[] = new String[nk];
+        PyObject[] args = new PyObject[na + nk];
+        String[] keywords = new String[nk];
         int i;
         for (i = 0; i < na; i++) {
             args[i] = params[i];
@@ -1464,7 +1464,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
     private static void unpack_iterable(int oparg, PyStack stack) {
         PyObject v = stack.pop();
         int i = oparg;
-        PyObject items[] = new PyObject[oparg];
+        PyObject[] items = new PyObject[oparg];
         for (PyObject item : v.asIterable()) {
             if (i <= 0) {
                 throw Py.ValueError("too many values to unpack");
@@ -1528,7 +1528,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
         }
 
         PyObject[] popN(int n) {
-            PyObject ret[] = new PyObject[n];
+            PyObject[] ret = new PyObject[n];
             top -= n;
 
             for (int i = 0; i < n; i++) {

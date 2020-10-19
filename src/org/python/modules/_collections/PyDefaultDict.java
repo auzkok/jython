@@ -80,7 +80,7 @@ public class PyDefaultDict extends PyDictionary implements Traverseproc {
             if (!(defaultFactory == Py.None || defaultFactory.isCallable())) {
                 throw Py.TypeError("first argument must be callable");
             }
-            PyObject newargs[] = new PyObject[args.length - 1];
+            PyObject[] newargs = new PyObject[args.length - 1];
             System.arraycopy(args, 1, newargs, 0, newargs.length);
             dict___init__(newargs, kwds);
         }

@@ -649,7 +649,7 @@ public abstract class BaseSet extends PyObject implements Set, Traverseproc {
     }
 
     @Override
-    public Object[] toArray(Object a[]) {
+    public Object[] toArray(Object[] a) {
         int size = size();
         if (a.length < size) {
             a = (Object[])Array.newInstance(a.getClass().getComponentType(), size);

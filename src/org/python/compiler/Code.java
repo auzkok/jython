@@ -13,7 +13,7 @@ import org.objectweb.asm.Opcodes;
 public class Code extends MethodVisitor implements Opcodes {
     MethodVisitor mv;
     String sig;
-    String locals[];
+    String[] locals;
     int nlocals;
     int argcount;
     int returnLocal;

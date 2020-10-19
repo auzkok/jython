@@ -82,12 +82,12 @@ public class ReferenceType extends AbstractReference {
         return new ArgParser(funcName, args, Py.NoKeywords, Py.NoKeywords);
     }
 
-    public PyObject __call__(PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         return weakref___call__(args, keywords);
     }
 
     @ExposedMethod
-    final PyObject weakref___call__(PyObject args[], String keywords[]) {
+    final PyObject weakref___call__(PyObject[] args, String[] keywords) {
         new ArgParser("__call__", args, keywords, Py.NoKeywords, 0);
         return Py.java2py(get());
     }

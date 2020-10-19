@@ -80,8 +80,8 @@ public class PyRandom extends PyObject {
         }
 
         try {
-            Object arr[]=((PyTuple)arg0).toArray();
-            byte b[]=new byte[arr.length];
+            Object[] arr =((PyTuple)arg0).toArray();
+            byte[] b =new byte[arr.length];
             for(int i=0;i<arr.length;i++) {
                 if (arr[i] instanceof Integer) {
                     b[i]=((Integer)arr[i]).byteValue();
@@ -106,8 +106,8 @@ public class PyRandom extends PyObject {
             ByteArrayOutputStream bout=new ByteArrayOutputStream();
             ObjectOutputStream oout=new ObjectOutputStream(bout);
             oout.writeObject(this.javaRandom);
-            byte b[]=bout.toByteArray();
-            PyInteger retarr[]=new PyInteger[b.length];
+            byte[] b =bout.toByteArray();
+            PyInteger[] retarr =new PyInteger[b.length];
             for (int i=0;i<b.length;i++) {
                 retarr[i]=new PyInteger(b[i]);
             }

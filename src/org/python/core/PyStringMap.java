@@ -59,7 +59,7 @@ public class PyStringMap extends AbstractDict implements Traverseproc {
         table.putAll(map);
     }
 
-    public PyStringMap(PyObject elements[]) {
+    public PyStringMap(PyObject[] elements) {
         this(elements.length);
         for (int i = 0; i < elements.length; i += 2) {
             __setitem__(elements[i], elements[i + 1]);

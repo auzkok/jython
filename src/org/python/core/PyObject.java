@@ -392,11 +392,11 @@ public class PyObject implements Serializable {
      * @param args all arguments to the function (including keyword arguments).
      * @param keywords the keywords used for all keyword arguments.
      **/
-    public PyObject __call__(PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         throw Py.TypeError(String.format("'%s' object is not callable", getType().fastGetName()));
     }
 
-    public PyObject __call__(ThreadState state, PyObject args[], String keywords[]) {
+    public PyObject __call__(ThreadState state, PyObject[] args, String[] keywords) {
         return __call__(args, keywords);
     }
 
@@ -411,14 +411,14 @@ public class PyObject implements Serializable {
      * @param args the last arguments to the function (including keyword arguments).
      * @param keywords the keywords used for all keyword arguments.
      **/
-    public PyObject __call__(PyObject arg1, PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject arg1, PyObject[] args, String[] keywords) {
         PyObject[] newArgs = new PyObject[args.length + 1];
         System.arraycopy(args, 0, newArgs, 1, args.length);
         newArgs[0] = arg1;
         return __call__(newArgs, keywords);
     }
 
-    public PyObject __call__(ThreadState state, PyObject arg1, PyObject args[], String keywords[]) {
+    public PyObject __call__(ThreadState state, PyObject arg1, PyObject[] args, String[] keywords) {
         return __call__(arg1, args, keywords);
     }
 
@@ -429,11 +429,11 @@ public class PyObject implements Serializable {
      *
      * @param args all arguments to the function.
      **/
-    public PyObject __call__(PyObject args[]) {
+    public PyObject __call__(PyObject[] args) {
         return __call__(args, Py.NoKeywords);
     }
 
-    public PyObject __call__(ThreadState state, PyObject args[]) {
+    public PyObject __call__(ThreadState state, PyObject[] args) {
         return __call__(args);
     }
 
@@ -4039,7 +4039,7 @@ public class PyObject implements Serializable {
         PyObject newobj = copyreg.__findattr__("__newobj__");
 
         n = ((PyTuple) args).size();
-        PyObject args2[] = new PyObject[n + 1];
+        PyObject[] args2 = new PyObject[n + 1];
         args2[0] = cls;
         for (i = 0; i < n; i++) {
             args2[i + 1] = ((PyTuple) args).pyget(i);
@@ -4194,7 +4194,7 @@ class PyIdentityTuple extends PyObject implements Traverseproc {
 
     PyObject[] list;
 
-    public PyIdentityTuple(PyObject elements[]) {
+    public PyIdentityTuple(PyObject[] elements) {
         list = elements;
     }
 

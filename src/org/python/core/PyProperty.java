@@ -62,7 +62,7 @@ public class PyProperty extends PyObject implements Traverseproc {
     }
 
     @Override
-    public PyObject __call__(PyObject arg1, PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject arg1, PyObject[] args, String[] keywords) {
         return fget.__call__(arg1);
     }
 

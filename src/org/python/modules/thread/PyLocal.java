@@ -25,9 +25,9 @@ public class PyLocal extends PyObject implements Traverseproc {
         }
     };
 
-    private PyObject args[];
+    private PyObject[] args;
 
-    private String keywords[];
+    private String[] keywords;
 
     public PyLocal() {
         this(TYPE);

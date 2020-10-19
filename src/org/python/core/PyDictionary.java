@@ -115,7 +115,7 @@ public class PyDictionary extends AbstractDict implements ConcurrentMap, Travers
      *            The initial elements that is inserted in the dictionary. Even numbered elements
      *            are keys, odd numbered elements are values.
      */
-    public PyDictionary(PyObject elements[]) {
+    public PyDictionary(PyObject[] elements) {
         this();
         ConcurrentMap<PyObject, PyObject> map = getMap();
         for (int i = 0; i < elements.length; i += 2) {

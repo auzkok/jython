@@ -2780,7 +2780,7 @@ public class PyType extends PyObject implements Serializable, Traverseproc {
             }
         }
 
-        public PyObject lookup_where(PyType type, String name, PyObject where[]) {
+        public PyObject lookup_where(PyType type, String name, PyObject[] where) {
             Object versionTag = type.versionTag;
             int index = indexFor(versionTag, name);
             MethodCacheEntry entry = table.get(index);

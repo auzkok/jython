@@ -856,14 +856,14 @@ public class jython {
          * @param args from program invocation.
          * @return
          */
-        static CommandLineOptions parse(String args[]) {
+        static CommandLineOptions parse(String[] args) {
             CommandLineOptions opts = new CommandLineOptions();
             opts._parse(args);
             return opts;
         }
 
         /** Parser implementation. Do not call this twice on the same instance. */
-        private void _parse(String args[]) {
+        private void _parse(String[] args) {
             // Create a scanner with the right tables for Python/Jython
             OptionScanner scanner = new OptionScanner(args, PROGRAM_OPTS, PROGRAM_LONG_OPTS);
             _parse(scanner, args);
@@ -879,7 +879,7 @@ public class jython {
          * Parse options into object state, until we encounter the first argument. This is a helper
          * to {@link #_parse(String[])}.
          */
-        private void _parse(OptionScanner scanner, String args[]) {
+        private void _parse(OptionScanner scanner, String[] args) {
             char c;
             /*
              * The default action is RUN, taken when we all the options have been processed, and

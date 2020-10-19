@@ -291,7 +291,7 @@ public class math implements ClassDictInit {
 
     public static double log10(PyObject v) {
         if (v instanceof PyLong) {
-            int exp[] = new int[1];
+            int[] exp = new int[1];
             double x = ((PyLong)v).scaledDoubleValue(exp);
             if (x <= ZERO) {
                 throw mathDomainError();
@@ -468,7 +468,7 @@ public class math implements ClassDictInit {
     }
 
     private static double calculateLongLog(PyLong v) {
-        int exp[] = new int[1];
+        int[] exp = new int[1];
         double x = v.scaledDoubleValue(exp);
         if (x <= ZERO) {
             throw mathDomainError();

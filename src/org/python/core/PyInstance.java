@@ -367,12 +367,12 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
     }
 
     @Override
-    public PyObject __call__(PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         return instance___call__(args, keywords);
     }
 
     @ExposedMethod
-    final PyObject instance___call__(PyObject args[], String keywords[]) {
+    final PyObject instance___call__(PyObject[] args, String[] keywords) {
         return invoke("__call__", args, keywords);
     }
 

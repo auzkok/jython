@@ -13,7 +13,7 @@ public class JavaImporter extends PyObject {
     private static Logger log = Logger.getLogger("org.python.import");
 
     @Override
-    public PyObject __call__(PyObject args[], String keywords[]) {
+    public PyObject __call__(PyObject[] args, String[] keywords) {
         if(args[0].toString().endsWith(JAVA_IMPORT_PATH_ENTRY)){
             return this;
         }

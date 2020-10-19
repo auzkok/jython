@@ -276,12 +276,12 @@ public class itertools implements ClassDictInit {
         return tee(iterable, 2);
     }
 
-    static PyTuple makeIndexedTuple(PyTuple pool, int indices[]) {
+    static PyTuple makeIndexedTuple(PyTuple pool, int[] indices) {
         return makeIndexedTuple(pool, indices, indices.length);
     }
     
-    static PyTuple makeIndexedTuple(PyTuple pool, int indices[], int end) {
-        PyObject items[] = new PyObject[end];
+    static PyTuple makeIndexedTuple(PyTuple pool, int[] indices, int end) {
+        PyObject[] items = new PyObject[end];
         for (int i = 0; i < end; i++) {
             items[i] = pool.__getitem__(indices[i]);
         }

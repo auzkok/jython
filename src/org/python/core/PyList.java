@@ -1243,7 +1243,7 @@ public class PyList extends PySequenceList {
 
     @Override
     public synchronized Object[] toArray() {
-        Object copy[] = list.toArray();
+        Object[] copy = list.toArray();
         for (int i = 0; i < copy.length; i++) {
             copy[i] = ((PyObject) copy[i]).__tojava__(Object.class);
         }

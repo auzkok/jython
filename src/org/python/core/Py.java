@@ -927,25 +927,25 @@ public final class Py extends PrePy {
         return decimalClass.__call__(newString(decimal));
     }
 
-    public static PyCode newCode(int argcount, String varnames[],
-            String filename, String name,
-            boolean args, boolean keywords,
-            PyFunctionTable funcs, int func_id,
-            String[] cellvars, String[] freevars,
-            int npurecell, int moreflags) {
+    public static PyCode newCode(int argcount, String[] varnames,
+                                 String filename, String name,
+                                 boolean args, boolean keywords,
+                                 PyFunctionTable funcs, int func_id,
+                                 String[] cellvars, String[] freevars,
+                                 int npurecell, int moreflags) {
         return new PyTableCode(argcount, varnames,
                 filename, name, 0, args, keywords, funcs,
                 func_id, cellvars, freevars, npurecell,
                 moreflags);
     }
 
-    public static PyCode newCode(int argcount, String varnames[],
-            String filename, String name,
-            int firstlineno,
-            boolean args, boolean keywords,
-            PyFunctionTable funcs, int func_id,
-            String[] cellvars, String[] freevars,
-            int npurecell, int moreflags) {
+    public static PyCode newCode(int argcount, String[] varnames,
+                                 String filename, String name,
+                                 int firstlineno,
+                                 boolean args, boolean keywords,
+                                 PyFunctionTable funcs, int func_id,
+                                 String[] cellvars, String[] freevars,
+                                 int npurecell, int moreflags) {
         return new PyTableCode(argcount, varnames,
                 filename, name, firstlineno, args, keywords,
                 funcs, func_id, cellvars, freevars, npurecell,
@@ -953,20 +953,20 @@ public final class Py extends PrePy {
     }
 
     // --
-    public static PyCode newCode(int argcount, String varnames[],
-            String filename, String name,
-            boolean args, boolean keywords,
-            PyFunctionTable funcs, int func_id) {
+    public static PyCode newCode(int argcount, String[] varnames,
+                                 String filename, String name,
+                                 boolean args, boolean keywords,
+                                 PyFunctionTable funcs, int func_id) {
         return new PyTableCode(argcount, varnames,
                 filename, name, 0, args, keywords, funcs,
                 func_id);
     }
 
-    public static PyCode newCode(int argcount, String varnames[],
-            String filename, String name,
-            int firstlineno,
-            boolean args, boolean keywords,
-            PyFunctionTable funcs, int func_id) {
+    public static PyCode newCode(int argcount, String[] varnames,
+                                 String filename, String name,
+                                 int firstlineno,
+                                 boolean args, boolean keywords,
+                                 PyFunctionTable funcs, int func_id) {
         return new PyTableCode(argcount, varnames,
                 filename, name, firstlineno, args, keywords,
                 funcs, func_id);
@@ -2817,16 +2817,16 @@ class JavaCode extends PyCode implements Traverseproc {
     }
 
     @Override
-    public PyObject call(ThreadState state, PyObject args[], String keywords[],
-            PyObject globals, PyObject[] defaults,
-            PyObject closure) {
+    public PyObject call(ThreadState state, PyObject[] args, String[] keywords,
+                         PyObject globals, PyObject[] defaults,
+                         PyObject closure) {
         return func.__call__(args, keywords);
     }
 
     @Override
-    public PyObject call(ThreadState state, PyObject self, PyObject args[], String keywords[],
-            PyObject globals, PyObject[] defaults,
-            PyObject closure) {
+    public PyObject call(ThreadState state, PyObject self, PyObject[] args, String[] keywords,
+                         PyObject globals, PyObject[] defaults,
+                         PyObject closure) {
         return func.__call__(self, args, keywords);
     }
 

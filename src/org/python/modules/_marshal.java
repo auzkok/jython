@@ -92,7 +92,7 @@ public class _marshal implements ClassDictInit {
         }
 
         private void write_strings(String[] some_strings, int depth) {
-            PyObject items[] = new PyObject[some_strings.length];
+            PyObject[] items = new PyObject[some_strings.length];
             for (int i = 0; i < some_strings.length; i++) {
                 items[i] = Py.newString(some_strings[i]);
             }
@@ -384,7 +384,7 @@ public class _marshal implements ClassDictInit {
 
         private String[] read_strings(int depth) {
             PyTuple t = (PyTuple) read_object_notnull(depth);
-            String some_strings[] = new String[t.__len__()];
+            String[] some_strings = new String[t.__len__()];
             int i = 0;
             for (PyObject item : t.asIterable()) {
                 some_strings[i++] = item.toString().intern();
@@ -474,7 +474,7 @@ public class _marshal implements ClassDictInit {
                     if (n < 0) {
                         throw badMarshalData(null);
                     }
-                    PyObject items[] = new PyObject[n];
+                    PyObject[] items = new PyObject[n];
                     for (int i = 0; i < n; i++) {
                         items[i] = read_object_notnull(depth + 1);
                     }
@@ -486,7 +486,7 @@ public class _marshal implements ClassDictInit {
                     if (n < 0) {
                         throw badMarshalData(null);
                     }
-                    PyObject items[] = new PyObject[n];
+                    PyObject[] items = new PyObject[n];
                     for (int i = 0; i < n; i++) {
                         items[i] = read_object_notnull(depth + 1);
                     }
@@ -511,7 +511,7 @@ public class _marshal implements ClassDictInit {
                 case TYPE_SET:
                 case TYPE_FROZENSET: {
                     int n = read_int();
-                    PyObject items[] = new PyObject[n];
+                    PyObject[] items = new PyObject[n];
                     for (int i = 0; i < n; i++) {
                         items[i] = read_object(depth + 1);
                     }
@@ -531,11 +531,11 @@ public class _marshal implements ClassDictInit {
                     int stacksize = read_int();
                     int flags = read_int();
                     String code = read_object_notnull(depth + 1).toString();
-                    PyObject consts[] = ((PyTuple) read_object_notnull(depth + 1)).getArray();
-                    String names[] = read_strings(depth + 1);
-                    String varnames[] = read_strings(depth + 1);
-                    String freevars[] = read_strings(depth + 1);
-                    String cellvars[] = read_strings(depth + 1);
+                    PyObject[] consts = ((PyTuple) read_object_notnull(depth + 1)).getArray();
+                    String[] names = read_strings(depth + 1);
+                    String[] varnames = read_strings(depth + 1);
+                    String[] freevars = read_strings(depth + 1);
+                    String[] cellvars = read_strings(depth + 1);
                     String filename = read_object_notnull(depth + 1).toString();
                     String name = read_object_notnull(depth + 1).toString();
                     int firstlineno = read_int();
