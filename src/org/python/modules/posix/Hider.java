@@ -68,6 +68,6 @@ class Hider {
     }
 
     /** The type of underlying POSIX library implementation (native or not). */
-    enum PosixImpl {NOT_APPLICABLE, NATIVE, JAVA};
+    enum PosixImpl {NOT_APPLICABLE, NATIVE, JAVA}
 
 }

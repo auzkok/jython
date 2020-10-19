@@ -181,7 +181,7 @@ public class PyBytecode extends PyBaseCode implements Traverseproc {
         CONTINUE,  /* 'continue' statement */
         YIELD      /* 'yield' operator */
 
-    };
+    }
 
     // to enable why's to be stored on a PyStack
     @Untraversable

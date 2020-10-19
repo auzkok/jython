@@ -303,7 +303,7 @@ public class Function extends BasePointer implements Traverseproc {
     public boolean refersDirectlyTo(PyObject ob) throws UnsupportedOperationException {
         if (ob != null && (pointer == ob || dict == ob || restype == ob)) {
             return true;
-        };
+        }
         if (argtypes != null)
         {
             for (PyObject obj: argtypes) {

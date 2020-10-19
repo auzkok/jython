@@ -758,7 +758,7 @@ public abstract class BaseBytes extends PySequence implements List<PyInteger> {
         protected void delSlice(int[] indices) {
             delslice(indices[0], indices[1], indices[2], indices[3]);
         }
-    };
+    }
 
     /*
      * ============================================================================================
@@ -2793,7 +2793,7 @@ public abstract class BaseBytes extends PySequence implements List<PyInteger> {
 
         // Scan over leading whitespace
         for (p = offset; p < limit && isspace(storage[p]); p++) {
-            ; // continue
+            // continue
         }
 
         // Note: bytearray().split() = bytearray(b' ').split() = []
@@ -2805,13 +2805,13 @@ public abstract class BaseBytes extends PySequence implements List<PyInteger> {
             // storage[p] is not whitespace or at the limit: it is the start of a word
             // Skip q over the non-whitespace at p
             for (q = p; q < limit && !isspace(storage[q]); q++) {
-                ; // continue
+                // continue
             }
             // storage[q] is whitespace or it is at the limit
             result.append(getslice(p - offset, q - offset));
             // Skip p over the whitespace at q
             for (p = q; p < limit && isspace(storage[p]); p++) {
-                ; // continue
+                // continue
             }
         }
 

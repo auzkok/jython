@@ -155,7 +155,7 @@ abstract class AbstractNumericMethodGenerator implements JITMethodGenerator {
 
         // box up the raw int/long result
         boxResult(mv, signature.getResultType());
-        emitResultConversion(mv, builder, signature);;
+        emitResultConversion(mv, builder, signature);
         mv.areturn();
         
         // Generate code to pop all the converted arguments off the stack 

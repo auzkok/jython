@@ -6,5 +6,5 @@ public enum unaryopType {
     Invert,
     Not,
     UAdd,
-    USub;
+    USub
 }

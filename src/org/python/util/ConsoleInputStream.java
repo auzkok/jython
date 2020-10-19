@@ -32,7 +32,7 @@ public abstract class ConsoleInputStream extends FilterInputStream {
      */
     public enum EOLPolicy {
         LEAVE, ADD, REPLACE
-    };
+    }
 
     /** The {@link EOLPolicy} specified in the constructor. */
     protected final EOLPolicy eolPolicy;

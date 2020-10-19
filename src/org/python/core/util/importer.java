@@ -26,14 +26,15 @@ public abstract class importer<T> extends PyObject {
 
     static enum EntryType {
         IS_SOURCE, IS_BYTECODE, IS_PACKAGE
-    };
+    }
+
     /** SearchOrder defines how we search for a module. */
     final SearchOrderEntry[] searchOrder;
 
     /** Module information */
     protected static enum ModuleInfo {
         ERROR, NOT_FOUND, MODULE, PACKAGE
-    };
+    }
 
     public importer(PyType subType) {
         super(subType);

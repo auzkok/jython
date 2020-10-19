@@ -431,7 +431,6 @@ public class _codecs {
                 // capturing regions of chars removed by the None mapping to optionally
                 // pass to an error handler. Though we don't seem to even use this
                 // functionality anywhere either
-                ;
             } else if (result instanceof PyInteger) {
                 int value = result.asInt();
                 if (value < 0 || value > PySystemState.maxunicode) {

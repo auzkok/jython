@@ -537,5 +537,5 @@ public abstract class PySequence extends PyObject {
         public PyObject getSlice(int start, int stop, int step) {
             return getslice(start, stop, step);
         }
-    };
+    }
 }

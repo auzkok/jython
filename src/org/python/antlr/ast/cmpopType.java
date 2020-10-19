@@ -12,5 +12,5 @@ public enum cmpopType {
     Is,
     IsNot,
     In,
-    NotIn;
+    NotIn
 }

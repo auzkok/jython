@@ -129,7 +129,6 @@ public class PyReader extends PyIterator {
                     state = ParserState.ESCAPED_CHAR;
                 } else if (c == ' ' && dialect.skipinitialspace) {
                     // ignore space at start of field
-                    ;
                 } else if (c == dialect.delimiter) {
                     // save empty field
                     parse_save_field();
@@ -173,7 +172,6 @@ public class PyReader extends PyIterator {
             case IN_QUOTED_FIELD:
                 // in quoted field
                 if (c == '\0') {
-                    ;
                 } else if (c == dialect.escapechar) {
                     // Possible escape character
                     state = ParserState.ESCAPE_IN_QUOTED_FIELD;
@@ -225,7 +223,6 @@ public class PyReader extends PyIterator {
 
             case EAT_CRNL:
                 if (c == '\n' || c == '\r') {
-                    ;
                 } else if (c == '\0') {
                     state = ParserState.START_RECORD;
                 } else {
@@ -271,7 +268,7 @@ public class PyReader extends PyIterator {
      */
     private enum ParserState {
         START_RECORD, START_FIELD, ESCAPED_CHAR, IN_FIELD, IN_QUOTED_FIELD, ESCAPE_IN_QUOTED_FIELD,
-        QUOTE_IN_QUOTED_FIELD, EAT_CRNL;
+        QUOTE_IN_QUOTED_FIELD, EAT_CRNL
     }
 
 

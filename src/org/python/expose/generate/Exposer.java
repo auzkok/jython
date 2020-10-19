@@ -130,7 +130,7 @@ public abstract class Exposer implements Opcodes, PyTypes {
                         + "passing their types to Instantiator, pushArgs must be overriden to put "
                         + "those args on the stack before the call");
             }
-        };
+        }
 
         public Type[] getTypes() {
             return types;

@@ -805,7 +805,7 @@ public class jython {
         /** Possible actions to take after processing the options. */
         enum Action {
             RUN, ERROR, HELP, VERSION
-        };
+        }
 
         /** The action to take after processing the options. */
         Action action = Action.RUN;

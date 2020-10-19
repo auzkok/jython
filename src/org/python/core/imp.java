@@ -83,7 +83,7 @@ public class imp {
         /** Take the filename from the {@code sourceName} argument */
         source,
         /** Take filename from the compiler annotation */
-        compiled_only;
+        compiled_only
     }
 
     /** A non-empty fromlist for __import__'ing sub-modules. */

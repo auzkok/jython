@@ -335,7 +335,6 @@ public class PyInstance extends PyObject implements FinalizablePyObject, Travers
                     throw Py.AttributeError("class " + instclass.__name__ +
                             " has no attribute '" + name + "'");
             }
-            ;
         }
     }
 
