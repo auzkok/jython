@@ -45,7 +45,7 @@ import java.text.SimpleDateFormat
 // Versions are specified in this grammar:
 // <major> . <minor> ( . <micro> )? ( <release> <serial> )? ( - <word> )?
 
-version = '2.7.3a1'
+version = '2.999-SO'
 
 // Valid examples (please preserve in comments):
 //version = '2.7.2a2'
@@ -64,14 +64,14 @@ group = 'org.python'
  * compiling for Java 7 (in v2.7.2) by maintaining compatibility in the code
  * base and in the choice of JARs.
  */
-sourceCompatibility = '1.7' // Make both 1.8 after 2.7.2 released
+sourceCompatibility = '1.8' // Make both 1.8 after 2.7.2 released
 targetCompatibility = '1.8'
 
 project.compileJava.options.debug = true
 
 
 // Separate the Gradle build from that of Ant
-buildDir = file('build2')
+buildDir = file('build')
 ext {
     buildDate = new Date()
     /*
