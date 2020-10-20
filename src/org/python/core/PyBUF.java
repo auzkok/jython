@@ -105,27 +105,27 @@ public interface PyBUF {
     /**
      * The maximum allowed number of dimensions (CPython restriction).
      */
-    static final int MAX_NDIM = 64;
+    int MAX_NDIM = 64;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it expects to write to the buffer contents. {@code getBuffer} will raise an
      * exception if the exporter's buffer cannot meet this requirement.
      */
-    static final int WRITABLE = 0x0001;
+    int WRITABLE = 0x0001;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it assumes a simple one-dimensional organisation of the exported storage with
      * item size of one. {@code getBuffer} will raise an exception if the consumer sets this flag
      * and the exporter cannot represent itself as byte array data.
      */
-    static final int SIMPLE = 0;
+    int SIMPLE = 0;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it requires {@link PyBuffer#getFormat()} to return a {@code String} indicating
      * the type of the unit. This exists for compatibility with CPython, as in Jython the format is
      * always provided by {@code getFormat()}.
      */
-    static final int FORMAT = 0x0004;
+    int FORMAT = 0x0004;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it is prepared to navigate the buffer as multi-dimensional using the
@@ -133,14 +133,14 @@ public interface PyBUF {
      * the flag but the exporter's buffer cannot be navigated without taking into account its
      * multiple dimensions.
      */
-    static final int ND = 0x0008;
+    int ND = 0x0008;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it expects to use the {@code strides} array. {@code getBuffer} will raise an
      * exception if consumer does not specify the flag but the exporter's buffer cannot be navigated
      * without using the {@code strides} array.
      */
-    static final int STRIDES = 0x0010 | ND;
+    int STRIDES = 0x0010 | ND;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it will assume C-order organisation of the items. {@code getBuffer} will raise
@@ -149,14 +149,14 @@ public interface PyBUF {
      */
     // It is possible this should have been (0x20|ND) expressing the idea that C-order addressing
     // will be assumed *instead of* using a strides array.
-    static final int C_CONTIGUOUS = 0x0020 | STRIDES;
+    int C_CONTIGUOUS = 0x0020 | STRIDES;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it will assume Fortran-order organisation of the items. {@code getBuffer} will
      * raise an exception if the exporter's buffer is not Fortran-ordered. {@code F_CONTIGUOUS}
      * implies {@code STRIDES}.
      */
-    static final int F_CONTIGUOUS = 0x0040 | STRIDES;
+    int F_CONTIGUOUS = 0x0040 | STRIDES;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it will assume a contiguous organisation of the items, but will enquire which
@@ -166,51 +166,51 @@ public interface PyBUF {
      * {@code ANY_CONTIGUOUS} implies {@code STRIDES}.
      */
     // Further CPython strangeness since it uses the strides array to answer the enquiry.
-    static final int ANY_CONTIGUOUS = 0x0080 | STRIDES;
+    int ANY_CONTIGUOUS = 0x0080 | STRIDES;
     /**
      * A constant used by the consumer in its call to {@link BufferProtocol#getBuffer(int)} to
      * specify that it understands the {@code suboffsets} array. {@code getBuffer} will raise an
      * exception if consumer does not specify the flag but the exporter's buffer cannot be navigated
      * without understanding the {@code suboffsets} array. {@code INDIRECT} implies {@code STRIDES}.
      */
-    static final int INDIRECT = 0x0100 | STRIDES;
+    int INDIRECT = 0x0100 | STRIDES;
     /**
      * Equivalent to {@code (ND | WRITABLE)}
      */
-    static final int CONTIG = ND | WRITABLE;
+    int CONTIG = ND | WRITABLE;
     /**
      * Equivalent to {@code ND}
      */
-    static final int CONTIG_RO = ND;
+    int CONTIG_RO = ND;
     /**
      * Equivalent to {@code (STRIDES | WRITABLE)}
      */
-    static final int STRIDED = STRIDES | WRITABLE;
+    int STRIDED = STRIDES | WRITABLE;
     /**
      * Equivalent to {@code STRIDES}
      */
-    static final int STRIDED_RO = STRIDES;
+    int STRIDED_RO = STRIDES;
     /**
      * Equivalent to {@code (STRIDES | WRITABLE | FORMAT)}
      */
-    static final int RECORDS = STRIDES | WRITABLE | FORMAT;
+    int RECORDS = STRIDES | WRITABLE | FORMAT;
     /**
      * Equivalent to {@code (STRIDES | FORMAT)}
      */
-    static final int RECORDS_RO = STRIDES | FORMAT;
+    int RECORDS_RO = STRIDES | FORMAT;
     /**
      * Equivalent to {@code (INDIRECT | WRITABLE | FORMAT)}. Also use this in the request if you
      * plan only to use the fully-encapsulated API ({@code byteAt}, {@code storeAt}, {@code copyTo},
      * {@code copyFrom}, etc.), without ever calling {@link PyBuffer#getNIOByteBuffer()} or using
      * {@link PyBuffer.Pointer}.
      */
-    static final int FULL = INDIRECT | WRITABLE | FORMAT;
+    int FULL = INDIRECT | WRITABLE | FORMAT;
     /**
      * Equivalent to {@code (INDIRECT | FORMAT)}. Also use this in the request if you plan only to
      * use the fully-encapsulated API ({@code byteAt}, {@code copyTo}, etc.), read only, without
      * ever calling {@link PyBuffer#getNIOByteBuffer()} or using {@link PyBuffer.Pointer}.
      */
-    static final int FULL_RO = INDIRECT | FORMAT;
+    int FULL_RO = INDIRECT | FORMAT;
 
     /* Constants for additional feature(s), not standard for CPython */
 
@@ -221,7 +221,7 @@ public interface PyBUF {
      * the exporter cannot expose its storage as Java array.
      */
     // XXX Pending: @Deprecated
-    static final int AS_ARRAY = 0x10000000;
+    int AS_ARRAY = 0x10000000;
 
     /* Constants for readability, not standard for CPython */
 
@@ -238,21 +238,21 @@ public interface PyBUF {
      * Flags outside the {@code NAVIGATION} set, work the other way round. Asking for one the buffer
      * cannot match is an error: not asking for a feature the buffer does not have is an error.
      */
-    static final int NAVIGATION = SIMPLE | ND | STRIDES | INDIRECT;
+    int NAVIGATION = SIMPLE | ND | STRIDES | INDIRECT;
     /**
      * A constant used by the exporter in processing {@link BufferProtocol#getBuffer(int)} to check
      * for assumed C-order organisation of the items.
      * {@code C_CONTIGUOUS = IS_C_CONTIGUOUS | STRIDES}.
      */
-    static final int IS_C_CONTIGUOUS = C_CONTIGUOUS & ~STRIDES;
+    int IS_C_CONTIGUOUS = C_CONTIGUOUS & ~STRIDES;
     /**
      * A constant used by the exporter in processing {@link BufferProtocol#getBuffer(int)} to check
      * for assumed C-order Fortran-order organisation of the items.
      * {@code F_CONTIGUOUS = IS_F_CONTIGUOUS | STRIDES}.
      */
-    static final int IS_F_CONTIGUOUS = F_CONTIGUOUS & ~STRIDES;
+    int IS_F_CONTIGUOUS = F_CONTIGUOUS & ~STRIDES;
     /**
      * Field mask, used as in if {@code ((flags&CONTIGUITY)== ... ) ...}.
      */
-    static final int CONTIGUITY = (C_CONTIGUOUS | F_CONTIGUOUS | ANY_CONTIGUOUS) & ~STRIDES;
+    int CONTIGUITY = (C_CONTIGUOUS | F_CONTIGUOUS | ANY_CONTIGUOUS) & ~STRIDES;
 }

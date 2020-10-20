@@ -174,7 +174,7 @@ class DefaultInvokerFactory {
         return getMarshaller(CType.typeOf(type));
     }
 
-    static interface ParameterMarshaller {
+    interface ParameterMarshaller {
         void marshal(HeapInvocationBuffer buffer, PyObject arg);
     }
 

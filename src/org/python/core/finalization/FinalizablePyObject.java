@@ -69,5 +69,5 @@ package org.python.core.finalization;
  */
 
 public interface FinalizablePyObject {
-    public void __del__();
+    void __del__();
 }

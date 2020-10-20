@@ -24,7 +24,7 @@ public abstract class importer<T> extends PyObject {
 
     protected static Logger logger = Logger.getLogger("org.python.import");
 
-    static enum EntryType {
+    enum EntryType {
         IS_SOURCE, IS_BYTECODE, IS_PACKAGE
     }
 
@@ -32,7 +32,7 @@ public abstract class importer<T> extends PyObject {
     final SearchOrderEntry[] searchOrder;
 
     /** Module information */
-    protected static enum ModuleInfo {
+    protected enum ModuleInfo {
         ERROR, NOT_FOUND, MODULE, PACKAGE
     }
 

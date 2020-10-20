@@ -10,10 +10,10 @@ public interface PyObjectAdapter {
     /**
      * Returns true if o can be adapted by this adapter.
      */
-    public abstract boolean canAdapt(Object o);
+    boolean canAdapt(Object o);
 
     /**
      * Returns the PyObject version of o or null if canAdapt(o) returns false.
      */
-    public abstract PyObject adapt(Object o);
+    PyObject adapt(Object o);
 }

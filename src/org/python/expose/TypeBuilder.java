@@ -8,15 +8,15 @@ import org.python.core.PyType;
  */
 public interface TypeBuilder {
 
-    public String getName();
+    String getName();
 
-    public PyObject getDict(PyType type);
+    PyObject getDict(PyType type);
 
-    public Class<? extends PyObject> getTypeClass();
+    Class<? extends PyObject> getTypeClass();
 
-    public Class<?> getBase();
+    Class<?> getBase();
 
-    public boolean getIsBaseType();
+    boolean getIsBaseType();
 
-    public String getDoc();
+    String getDoc();
 }

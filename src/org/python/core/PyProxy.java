@@ -34,7 +34,7 @@ public interface PyProxy {
      * Associate an system state with this proxy instance. This is done during construction and
      * initialization of the proxy instance.
      */
-    abstract public void _setPySystemState(PySystemState ss);
+    void _setPySystemState(PySystemState ss);
 
     /**
      * Return the associated system state.

@@ -7,5 +7,5 @@ package org.python.core;
  */
 public interface PyRunnable {
     /** Return the module's code object. */
-    abstract public PyCode getMain();
+    PyCode getMain();
 }

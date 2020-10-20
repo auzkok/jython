@@ -7,14 +7,14 @@ package org.python.modules._locale;
  */
 public interface DateSymbolLocale {
 
-    public String[] getShortWeekdays();
+    String[] getShortWeekdays();
 
-    public String[] getShortMonths();
+    String[] getShortMonths();
 
-    public String[] getMonths();
+    String[] getMonths();
 
-    public String[] getAmPmStrings();
+    String[] getAmPmStrings();
 
-    public String[] getWeekdays();
+    String[] getWeekdays();
 
 }

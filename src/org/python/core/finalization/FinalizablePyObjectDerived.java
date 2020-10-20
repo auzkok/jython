@@ -20,5 +20,5 @@ public interface FinalizablePyObjectDerived {
      * if the type implements {@code FinalizablePyObjectDerived} while
      * {@code __del_builtin__} is called in any case.
      */
-    public void __del_derived__();
+    void __del_derived__();
 }

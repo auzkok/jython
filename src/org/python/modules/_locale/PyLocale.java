@@ -16,13 +16,13 @@ import org.python.core.PyString;
  */
 public interface PyLocale extends DateSymbolLocale {
 
-    public PyDictionary localeconv();
+    PyDictionary localeconv();
 
-    public PyString getLocaleString();
+    PyString getLocaleString();
 
-    public PyString getUnderlyingLocale();
+    PyString getUnderlyingLocale();
 
-    public int strcoll(PyString str1, PyString str2);
+    int strcoll(PyString str1, PyString str2);
 
-    public PyString strxfrm(PyString str1);
+    PyString strxfrm(PyString str1);
 }

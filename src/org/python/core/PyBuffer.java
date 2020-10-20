@@ -212,7 +212,7 @@ public interface PyBuffer extends PyBUF, BufferProtocol, AutoCloseable {
      * @param count number of items in the required slice
      * @return a buffer representing the slice
      */
-    public PyBuffer getBufferSlice(int flags, int start, int count);
+    PyBuffer getBufferSlice(int flags, int start, int count);
 
     /**
      * Get a <code>PyBuffer</code> that represents a slice of the current one described in terms of
@@ -244,7 +244,7 @@ public interface PyBuffer extends PyBUF, BufferProtocol, AutoCloseable {
      * @param stride index-distance in the current buffer between consecutive items in the slice
      * @return a buffer representing the slice
      */
-    public PyBuffer getBufferSlice(int flags, int start, int count, int stride);
+    PyBuffer getBufferSlice(int flags, int start, int count, int stride);
 
     // Access to underlying byte-oriented storage
     //
@@ -327,7 +327,7 @@ public interface PyBuffer extends PyBUF, BufferProtocol, AutoCloseable {
      * buffer API roughly where the CPython buffer API uses a C (char *) pointer.
      */
     @Deprecated
-    public static class Pointer {
+    class Pointer {
 
         /** Reference to the array holding the bytes. */
         public byte[] storage;
@@ -456,6 +456,6 @@ public interface PyBuffer extends PyBUF, BufferProtocol, AutoCloseable {
      * unsigned integers) as the character codes of a <code>String</code>.
      */
     @Override
-    public String toString();
+    String toString();
 
 }

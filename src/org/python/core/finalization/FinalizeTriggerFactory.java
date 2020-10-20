@@ -7,5 +7,5 @@ import org.python.core.PyObject;
  */
 public interface FinalizeTriggerFactory {
 
-    public FinalizeTrigger makeTrigger(PyObject toFinalize);
+    FinalizeTrigger makeTrigger(PyObject toFinalize);
 }

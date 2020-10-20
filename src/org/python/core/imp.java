@@ -79,7 +79,7 @@ public class imp {
      * ends up in {@code co_filename} attribute of the module's {@code PyCode}, should be from the
      * caller or the compiled file.
      */
-    static enum CodeImport {
+    enum CodeImport {
         /** Take the filename from the {@code sourceName} argument */
         source,
         /** Take filename from the compiler annotation */

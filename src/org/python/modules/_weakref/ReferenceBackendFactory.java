@@ -7,7 +7,7 @@ import org.python.core.PyObject;
  */
 public interface ReferenceBackendFactory {
 
-    public ReferenceBackend makeBackend(GlobalRef caller, PyObject referent);
-    public void notifyClear(ReferenceBackend ref, GlobalRef caller);
-    public void updateBackend(ReferenceBackend ref, GlobalRef caller);
+    ReferenceBackend makeBackend(GlobalRef caller, PyObject referent);
+    void notifyClear(ReferenceBackend ref, GlobalRef caller);
+    void updateBackend(ReferenceBackend ref, GlobalRef caller);
 }

@@ -1256,7 +1256,7 @@ for line in sys.stdin:
         INSTANCE(Options.sreCacheSpec);
         private LoadingCache<PyString, int[]> cache;
 
-        private CACHE(String spec) {
+        CACHE(String spec) {
             CacheLoader<PyString, int[]> loader = new CacheLoader<PyString, int[]>() {
                 @Override
                 public int[] load(PyString key) {

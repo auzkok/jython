@@ -5,7 +5,7 @@ import org.python.antlr.ParseException;
 public interface Pragma {
     void addTo(PragmaReceiver receiver);
 
-    public abstract class PragmaModule {
+    abstract class PragmaModule {
         public final String name;
 
         protected PragmaModule(String name) {
@@ -17,7 +17,7 @@ public interface Pragma {
         public abstract Pragma getStarPragma();
     }
 
-    public final class ForbiddenPragmaModule extends PragmaModule {
+    final class ForbiddenPragmaModule extends PragmaModule {
         private final String message;
 
         public ForbiddenPragmaModule(String name) {

@@ -656,7 +656,7 @@ public interface Traverseproc {
      * {@link Visitproc#visit(PyObject, Object)} must not be
      * called with a {@code null} PyObject-argument.
      */
-    public int traverse(Visitproc visit, Object arg);
+    int traverse(Visitproc visit, Object arg);
 
     /**
      * Optional operation.
@@ -665,5 +665,5 @@ public interface Traverseproc {
      * a visitproc that just watches out for {@code ob}.
      * Must return {@code false} if {@code ob} is {@code null}.
      */
-    public boolean refersDirectlyTo(PyObject ob) throws UnsupportedOperationException;
+    boolean refersDirectlyTo(PyObject ob) throws UnsupportedOperationException;
 }

@@ -15,5 +15,5 @@ public interface TraverseprocDerived {
      * Like in CPython, {@code arg} must be passed
      * unmodified to {@code visit} as its second parameter.
      */
-    public int traverseDerived(Visitproc visit, Object arg);
+    int traverseDerived(Visitproc visit, Object arg);
 }

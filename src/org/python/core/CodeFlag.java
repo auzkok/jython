@@ -64,7 +64,7 @@ public enum CodeFlag {
     public final int flag;
     private static Iterable<CodeFlag> allFlags = Collections.unmodifiableList(Arrays.asList(values()));
 
-    private CodeFlag(int flag) {
+    CodeFlag(int flag) {
         this.flag = flag;
     }
 

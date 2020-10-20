@@ -9,7 +9,7 @@
 package org.python.core;
 
 public interface ucnhashAPI {
-    public int getCchMax();
+    int getCchMax();
 
-    public int getValue(String s, int start, int end);
+    int getValue(String s, int start, int end);
 }

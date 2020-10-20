@@ -75,11 +75,11 @@ public enum FutureFeature implements Pragma {
     };
     private final CodeFlag flag;
 
-    private FutureFeature(CodeFlag flag) {
+    FutureFeature(CodeFlag flag) {
         this.flag = flag;
     }
 
-    private FutureFeature() {
+    FutureFeature() {
         this(null);
     }
 

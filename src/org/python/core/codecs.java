@@ -470,7 +470,7 @@ public class codecs {
     /**
      * Enumeration of the error causes during decoding of the Base64 segment of UTF-7
      */
-    static enum UTF7Error {
+    enum UTF7Error {
         NONE("No error"),                                               // No error
         PADDING("non-zero padding bits in shift sequence"),             // Error when at end
         PARTIAL("partial character in shift sequence"),                 // Error when at end
@@ -481,7 +481,7 @@ public class codecs {
         /** Suitable error message */
         final String msg;
 
-        private UTF7Error(String msg) {
+        UTF7Error(String msg) {
             this.msg = msg;
         }
     }

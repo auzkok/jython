@@ -17,5 +17,5 @@ public interface FinalizableBuiltin {
      * if the type implements {@link FinalizablePyObjectDerived}, while
      * {@link #__del_builtin__()} is called in any case.
      */
-    public void __del_builtin__();
+    void __del_builtin__();
 }

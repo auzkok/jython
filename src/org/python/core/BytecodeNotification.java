@@ -14,7 +14,7 @@ public class BytecodeNotification {
      * and the Java class object.
      */
     public interface Callback {
-        public void notify(String name, byte[] bytes, Class c);
+        void notify(String name, byte[] bytes, Class c);
     }
 
     /**

@@ -157,13 +157,13 @@ public class PyUnicode extends PyString implements Iterable<Integer> {
     private interface IndexTranslator extends Serializable {
 
         /** Number of supplementary characters (hence point code length may be found). */
-        public int suppCount();
+        int suppCount();
 
         /** Translate a UTF-16 code unit index to its equivalent code point index. */
-        public int codePointIndex(int utf16Index);
+        int codePointIndex(int utf16Index);
 
         /** Translate a code point index to its equivalent UTF-16 code unit index. */
-        public int utf16Index(int codePointIndex);
+        int utf16Index(int codePointIndex);
     }
 
     /**

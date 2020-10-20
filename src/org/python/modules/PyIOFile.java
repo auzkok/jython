@@ -9,16 +9,16 @@ representation. Used by cPickle and marshall.
 
 public interface PyIOFile {
 
-    public abstract void write(String str);
+    void write(String str);
     // Usefull optimization since most data written are chars.
 
-    public abstract void write(char str);
+    void write(char str);
 
-    public abstract void flush();
+    void flush();
 
-    public abstract String read(int len);
+    String read(int len);
     // Usefull optimization since all readlines removes the
     // trainling newline.
 
-    public abstract String readlineNoNl();
+    String readlineNoNl();
 }

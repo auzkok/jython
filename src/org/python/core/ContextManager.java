@@ -6,6 +6,6 @@ package org.python.core;
  */
 
 public interface ContextManager {
-    public PyObject __enter__(ThreadState ts);
-    public boolean __exit__(ThreadState ts, PyException exception);
+    PyObject __enter__(ThreadState ts);
+    boolean __exit__(ThreadState ts, PyException exception);
 }

@@ -22,7 +22,7 @@ public interface Console {
      *
      * @throws IOException in case of failure related to i/o
      */
-    public void install() throws IOException;
+    void install() throws IOException;
 
     /**
      * Uninstall the Console (if possible). A Console that installs a replacement for
@@ -30,7 +30,7 @@ public interface Console {
      *
      * @throws UnsupportedOperationException if the Console cannot be uninstalled
      */
-    public void uninstall() throws UnsupportedOperationException;
+    void uninstall() throws UnsupportedOperationException;
 
     /**
      * Name of the encoding, normally supplied during initialisation, and used for line input.
@@ -38,13 +38,13 @@ public interface Console {
      *
      * @return name of the encoding in use.
      */
-    public String getEncoding();
+    String getEncoding();
 
     /**
      * Accessor for encoding to use for line input as a <code>Charset</code>.
      *
      * @return Charset of the encoding in use.
      */
-    public Charset getEncodingCharset();
+    Charset getEncodingCharset();
 
 }

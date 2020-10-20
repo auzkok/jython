@@ -4,12 +4,12 @@ import org.python.core.PyObject;
 import org.python.core.PyList;
 
 public interface ReferenceBackend {
-    public PyObject get();
-    public void add(AbstractReference ref);
-    public boolean isCleared();
-    public AbstractReference find(Class<?> cls);
-    public int pythonHashCode();
-    public PyList refs();
-    public void restore(PyObject formerReferent);
-    public int count();
+    PyObject get();
+    void add(AbstractReference ref);
+    boolean isCleared();
+    AbstractReference find(Class<?> cls);
+    int pythonHashCode();
+    PyList refs();
+    void restore(PyObject formerReferent);
+    int count();
 }
